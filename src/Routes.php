@@ -119,6 +119,10 @@ class Routes
             return "recipients/$recipientId/balance/operations/$balanceOperationId";
         };
 
+        $anonymous->kyc = static function ($id) {
+            return "recipients/$id/kyc_link";
+        };
+
         return $anonymous;
     }
 
@@ -173,16 +177,8 @@ class Routes
             return "recipients/$recipientId/bulk_anticipations/limits";
         };
 
-        $anonymous->confirm = static function ($recipientId, $bulkAnticipationId) {
-            return "recipients/$recipientId/bulk_anticipations/$bulkAnticipationId/confirm";
-        };
-
         $anonymous->cancel = static function ($recipientId, $bulkAnticipationId) {
             return "recipients/$recipientId/bulk_anticipations/$bulkAnticipationId/cancel";
-        };
-
-        $anonymous->delete = static function ($recipientId, $bulkAnticipationId) {
-            return "recipients/$recipientId/bulk_anticipations/$bulkAnticipationId";
         };
 
         return $anonymous;
